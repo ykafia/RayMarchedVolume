@@ -8,27 +8,27 @@ Attributes:
             MixinReference: RayMarchingSphere
             Generics:
                 00000000000000000000000000000000~MaxSteps: !ComputeColorParameterFloat
-                    Value: 200.0
+                    Value: 50.0
                 6a7b3f1aa35f1ad43bbf35afe6889e6e~MaxDistance: !ComputeColorParameterFloat
-                    Value: 5.0
+                    Value: 1.0
                 b6e433ffd857f9a86b8b2c334ceab4cf~StepSize: !ComputeColorParameterFloat
-                    Value: 0.025
+                    Value: 0.02
             CompositionNodes:
                 00000000000000000000000000000000~DensityFunction: !ComputeShaderClassColor
                     MixinReference: WorleyCompute
                     Generics:
-                        2e5c0947c69c5e375d79281684dce264~Octaves: !ComputeColorParameterInt
+                        358c9e437fd34048941e7477f4e58282~Octaves: !ComputeColorParameterInt
                             Value: 2
-                        59c3516a1bba6e9507cd88bf2b66e60e~Frequency: !ComputeColorParameterFloat
-                            Value: 8.0
-                        2f03eeb3e110596ecb653fa4db5122e8~Jitter: !ComputeColorParameterFloat
+                        fffccf77d4805fd3da521972a687dcba~Frequency: !ComputeColorParameterFloat
+                            Value: 2.0
+                        d4f4b447f40ee80f2238fce04582a79a~Jitter: !ComputeColorParameterFloat
+                            Value: 10.0
+                        11361337bffc9273c1fef8631c0649d1~Amplitude: !ComputeColorParameterFloat
+                            Value: 2.0
+                        c10ec2e8d362d041d619d5f025902e41~Lacunarity: !ComputeColorParameterFloat
+                            Value: 2.0
+                        9051f33ffea7bd30537f02c216bb7ab1~Gain: !ComputeColorParameterFloat
                             Value: 1.0
-                        36ba8ffb357f728a73cab1cb48b2b611~Amplitude: !ComputeColorParameterFloat
-                            Value: 1.0
-                        7f10284eac82b885aa5def2e855b6e25~Lacunarity: !ComputeColorParameterFloat
-                            Value: 1.0
-                        ee2ba088d36529724e769371cc13f3ee~Gain: !ComputeColorParameterFloat
-                            Value: 20.0
                     CompositionNodes: {}
         Intensity: !ComputeFloat
             Value: 1.0

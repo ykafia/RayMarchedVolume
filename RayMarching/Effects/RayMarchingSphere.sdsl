@@ -3,7 +3,7 @@
 namespace RayMarching.Effects
 {
     shader RayMarchingSphere<float MaxSteps, float MaxDistance, float StepSize> : 
-            ComputeColor, PositionStream4
+            ComputeColor, PositionStream4, RayMarchingBase
     {
         compose ComputeColor DensityFunction;
 
@@ -14,8 +14,8 @@ namespace RayMarching.Effects
 
         override float4 Compute()
         {
-            //float3 rd = normalize(streams.PositionWS.xyz-CameraPos); 
-            //float3 ro = CameraPos; //float3(World._m03,World._m13,World._m23);
+            float3 rd = normalize(streams.PositionWS.xyz-CameraPos); 
+            float3 ro = streams.PositionWS.xyz; //float3(World._m03,World._m13,World._m23);
             //float4 color = float4(0,0,0,0);
 
             //return saturate(RayMarchConstant(ro,rd));
@@ -25,25 +25,29 @@ namespace RayMarching.Effects
             //}
             //return color;
             //return float4(ro,1);
-            return DensityFunction.Compute();
+            return saturate(RayMarchConstant(ro,rd));
             //return float4(v,v,v,1);
         }
 
-        //override float4 RayMarchConstant(float3 ro, float3 rd)
-        //{
-        //    float4 result = float4(0,0,0,0);
-        //    for (int i = 0; i < MaxSteps; i++)
-        //    {
-        //        float3 pos = ro + i * StepSize * rd;
-        //        // if hit, add density to the thing (fbm?)
-        //        if(fSphere(pos, ))
-        //        {
-        //            result += GetDensity(pos)*0.01;
-        //        }
+        override float4 RayMarchConstant(float3 ro, float3 rd)
+        {
+            float4 initPos = streams.PositionWS;
+            float4 result = float4(0,0,0,0);
+            for (int i = 0; i < MaxSteps; i++)
+            {
+                float3 pos = ro + i * StepSize * rd;
+                streams.PositionWS = float4(pos,initPos.w);
+                result += DensityFunction.Compute()/10;
+                // if hit, add density to the thing (fbm?)
+                //if(DensityFunction.Compute().w > 0)
+                //{
+                //    result += DensityFunction.Compute();
+                //}
                 
-        //    }
-        //    return result;
-        //}
+            }
+            streams.PositionWS = initPos;
+            return result;
+        }
         
 
         //override bool Hit(float3 position)

@@ -11,6 +11,16 @@
         {
             return frac(sin(float2(dot(p,float2(127.1,311.7)),dot(p,float2(269.5,183.3))))*43758.5453);
         }
+        float3 Random3(float3 c) {
+            float j = 4096.0*sin(dot(c,float3(17.0, 59.4, 15.0)));
+            float3 r;
+            r.z = frac(512.0*j);
+            j *= .125;
+            r.x = frac(512.0*j);
+            j *= .125;
+            r.y = frac(512.0*j);
+            return r-0.5;
+        }
 
         float ComputeNoise(float2 p)
         {
