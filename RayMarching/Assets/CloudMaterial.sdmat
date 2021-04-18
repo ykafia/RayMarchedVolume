@@ -1,0 +1,43 @@
+!MaterialAsset
+Id: 28498782-93a1-42d2-a2ac-844a133d1956
+SerializedVersion: {Stride: 2.0.0.0}
+Tags: []
+Attributes:
+    Emissive: !MaterialEmissiveMapFeature
+        EmissiveMap: !ComputeShaderClassColor
+            MixinReference: RayMarchingSphere
+            Generics:
+                00000000000000000000000000000000~MaxSteps: !ComputeColorParameterFloat
+                    Value: 200.0
+                6a7b3f1aa35f1ad43bbf35afe6889e6e~MaxDistance: !ComputeColorParameterFloat
+                    Value: 5.0
+                b6e433ffd857f9a86b8b2c334ceab4cf~StepSize: !ComputeColorParameterFloat
+                    Value: 0.025
+            CompositionNodes:
+                00000000000000000000000000000000~DensityFunction: !ComputeShaderClassColor
+                    MixinReference: WorleyCompute
+                    Generics:
+                        2e5c0947c69c5e375d79281684dce264~Octaves: !ComputeColorParameterInt
+                            Value: 2
+                        59c3516a1bba6e9507cd88bf2b66e60e~Frequency: !ComputeColorParameterFloat
+                            Value: 8.0
+                        2f03eeb3e110596ecb653fa4db5122e8~Jitter: !ComputeColorParameterFloat
+                            Value: 1.0
+                        36ba8ffb357f728a73cab1cb48b2b611~Amplitude: !ComputeColorParameterFloat
+                            Value: 1.0
+                        7f10284eac82b885aa5def2e855b6e25~Lacunarity: !ComputeColorParameterFloat
+                            Value: 1.0
+                        ee2ba088d36529724e769371cc13f3ee~Gain: !ComputeColorParameterFloat
+                            Value: 20.0
+                    CompositionNodes: {}
+        Intensity: !ComputeFloat
+            Value: 1.0
+        UseAlpha: true
+    Transparency: !MaterialTransparencyBlendFeature
+        Alpha: !ComputeFloat
+            Value: 1.0
+        Tint: !ComputeColor
+            Value: {R: 1.0, G: 1.0, B: 1.0, A: 1.0}
+    Overrides:
+        UVScale: {X: 1.0, Y: 1.0}
+Layers: {}

@@ -1,0 +1,113 @@
+!SceneAsset
+Id: d30be993-29e6-470b-89ac-7ad9d1f62aaf
+SerializedVersion: {Stride: 3.1.0.1}
+Tags: []
+ChildrenIds: []
+Offset: {X: 0.0, Y: 0.0, Z: 0.0}
+Hierarchy:
+    RootParts:
+        - ref!! 6ac0fb08-bd9c-4802-9de1-5c3aa87f81e0
+        - ref!! 5fbffb54-6740-4c54-a8f8-b9c564e5fd2e
+        - ref!! bba56555-5511-48cf-8a7e-5e85ecea970d
+        - ref!! 664f8db3-a784-4a42-be82-e9ad46984705
+        - ref!! 50e19d08-aefb-45f4-bb66-3b04188c5f59
+    Parts:
+        -   Entity:
+                Id: 50e19d08-aefb-45f4-bb66-3b04188c5f59
+                Name: Cube
+                Components:
+                    6a8086a23290344d15bfb82c1b1d53bf: !TransformComponent
+                        Id: cc2f6643-2841-4c23-86dd-4da48831c1ea
+                        Position: {X: 0.0, Y: 0.5, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    84bfbb7aa0a193d84de933b1dcd1eb06: !ModelComponent
+                        Id: d401d68c-0f08-43d2-a2ed-3b25b8efa2ea
+                        Model: 3553f760-50f2-44e5-bc43-5253a2abfaa1:Cube
+                        IsShadowCaster: false
+                        Materials:
+                            2b4e1319c334065f734845b3f1627f43~0: 28498782-93a1-42d2-a2ac-844a133d1956:CloudMaterial
+                    56f2f46b52a77a78d3c6da9587c4d453: !RayMarching.UpdateCameraPos,RayMarching
+                        Id: a8912b9b-6b32-4f0e-99b2-3b835d102d2f
+                        Camera: ref!! 6ac0fb08-bd9c-4802-9de1-5c3aa87f81e0
+        -   Entity:
+                Id: 5fbffb54-6740-4c54-a8f8-b9c564e5fd2e
+                Name: Directional light
+                Components:
+                    8e68efc21d1ae3bfcb6a7f3d9ba07eb1: !TransformComponent
+                        Id: 01057215-8c2e-4ba8-96b7-cecc5d5289b1
+                        Position: {X: 0.0, Y: 2.0, Z: 0.0}
+                        Rotation: {X: 1.131334E-08, Y: -0.9659258, Z: -0.25881904, W: -4.222196E-08}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    d06f89613f5783e9e694a2402acc7c0b: !LightComponent
+                        Id: d68117cf-311f-488d-a056-3ab4a0bcd569
+                        Type: !LightDirectional
+                            Color: !ColorRgbProvider
+                                Value: {R: 1.0, G: 1.0, B: 1.0}
+                            Shadow:
+                                Enabled: true
+                                Filter: !LightShadowMapFilterTypePcf
+                                    FilterSize: Filter5x5
+                                Size: Large
+                                DepthRange: {}
+                                PartitionMode: !LightDirectionalShadowMap.PartitionLogarithmic {}
+                                ComputeTransmittance: false
+                                BiasParameters: {}
+                        Intensity: 20.0
+        -   Entity:
+                Id: 664f8db3-a784-4a42-be82-e9ad46984705
+                Name: Ground
+                Components:
+                    90f36af5c7d731c7b8d2100ddbae179f: !TransformComponent
+                        Id: 3836dce9-2a8f-4020-acc1-e28e0e834d94
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    b26596ee91169a250c02f21ed321c946: !ModelComponent
+                        Id: 4cce33fb-80bf-4d7f-84c2-15d72ee79a9f
+                        Model: 9325fef3-4180-4b69-9d68-0dc241678c3f:Ground
+                        Materials: {}
+        -   Entity:
+                Id: 6ac0fb08-bd9c-4802-9de1-5c3aa87f81e0
+                Name: Camera
+                Components:
+                    6a9a48024ceb5c01054bec81369e5a74: !TransformComponent
+                        Id: f8a8f49a-80d8-42ae-83a9-f2bdfa9698b3
+                        Position: {X: 2.6, Y: 0.6, Z: -1.0}
+                        Rotation: {X: 0.0, Y: 0.82903755, Z: 0.0, W: 0.5591929}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    e3c1dd1f8b39cd8c496b8f2e452c0069: !CameraComponent
+                        Id: 467752a5-7591-49aa-a540-34219072d815
+                        Name: null
+                        Projection: Perspective
+                        Slot: 3eef256a-11e8-4b41-a3dc-e2b2e30d24b0
+                    a4ce15cb21387408f8a349fa2d8ccac7: !RayMarching.BasicCameraController,RayMarching
+                        Id: d9f2c2a8-2330-4325-b071-66d5541071fa
+                        Gamepad: false
+                        KeyboardMovementSpeed: {X: 5.0, Y: 5.0, Z: 5.0}
+                        TouchMovementSpeed: {X: 0.7, Y: 0.7, Z: 0.3}
+                        SpeedFactor: 5.0
+                        KeyboardRotationSpeed: {X: 3.0, Y: 3.0}
+                        MouseRotationSpeed: {X: 1.0, Y: 1.0}
+                        TouchRotationSpeed: {X: 1.0, Y: 0.7}
+        -   Entity:
+                Id: bba56555-5511-48cf-8a7e-5e85ecea970d
+                Name: Skybox
+                Components:
+                    6f899fa3a10ece799fbeb4186471c85c: !TransformComponent
+                        Id: 2f1d30b0-3be9-4cc4-a407-a1255889a7b1
+                        Position: {X: 0.0, Y: 2.0, Z: -2.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    d811de1a1a822043c0f7b8317011f740: !BackgroundComponent
+                        Id: 2128a7e8-6f4e-4ead-b658-6e62b6618929
+                        Texture: e62ecb25-adef-4153-b055-f699bb1b1db5:Skybox texture
+                    4c05aaebf71253c6e7fa01ee8ae020c3: !LightComponent
+                        Id: 92e4293d-4384-475f-8802-d020b75c81b9
+                        Type: !LightSkybox
+                            Skybox: bdc5a0b3-7175-4009-8e07-b5a51720a8de:Skybox

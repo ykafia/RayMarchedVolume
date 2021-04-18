@@ -1,0 +1,28 @@
+﻿namespace RayMarching.Effects
+{
+    shader RayMarchingBase
+    {
+        struct RayMarchInfo
+        {
+            float density;
+            float rayDistance;
+            float4 color;
+        };
+
+        float4 RayMarchConstant(float3 ro, float3 rd)
+        {
+            return float4(0,0,0,0);
+        }
+
+        bool Hit(float3 position)
+        {
+            return false;
+        }
+        float DistanceHit(float3 position)
+        {
+            return 0;
+        }
+
+
+    };
+}

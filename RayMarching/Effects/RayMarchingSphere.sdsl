@@ -1,0 +1,68 @@
+﻿using Stride.Noises;
+
+namespace RayMarching.Effects
+{
+    shader RayMarchingSphere<float MaxSteps, float MaxDistance, float StepSize> : 
+            ComputeColor, PositionStream4
+    {
+        compose ComputeColor DensityFunction;
+
+        cbuffer PerMaterial
+        {
+            stage float3 CameraPos = float3(2.6,0.6,-1);
+        };
+
+        override float4 Compute()
+        {
+            //float3 rd = normalize(streams.PositionWS.xyz-CameraPos); 
+            //float3 ro = CameraPos; //float3(World._m03,World._m13,World._m23);
+            //float4 color = float4(0,0,0,0);
+
+            //return saturate(RayMarchConstant(ro,rd));
+            //if(length(depth.xyz)!= 0)
+            //{
+            //    color = float4(1,0,0,depth.w);
+            //}
+            //return color;
+            //return float4(ro,1);
+            return DensityFunction.Compute();
+            //return float4(v,v,v,1);
+        }
+
+        //override float4 RayMarchConstant(float3 ro, float3 rd)
+        //{
+        //    float4 result = float4(0,0,0,0);
+        //    for (int i = 0; i < MaxSteps; i++)
+        //    {
+        //        float3 pos = ro + i * StepSize * rd;
+        //        // if hit, add density to the thing (fbm?)
+        //        if(fSphere(pos, ))
+        //        {
+        //            result += GetDensity(pos)*0.01;
+        //        }
+                
+        //    }
+        //    return result;
+        //}
+        
+
+        //override bool Hit(float3 position)
+        //{
+        //    return distance(float3(0,0.5,0),position) < 0.5;
+        //}
+        
+        //float GetDensity(float3 position)
+        //{
+        //    float len = abs(length(float3(0,0.5,0) - position));
+        //    return len;
+        //}
+
+        //override float DistanceHit(float3 position)
+        //{
+        //    return distance(float3(0,0.5,0),position) - 0.5;
+        //}
+
+        
+
+    };
+}
